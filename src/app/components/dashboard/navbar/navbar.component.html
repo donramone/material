@@ -1,9 +1,7 @@
 <mat-toolbar color="primary">
     <span>APP PAGOS PAM</span>
     <span class="example-spacer"></span>
-    <button mat-button color="accent" routerLink="/dashboard" >Dashboard</button>
-    <button mat-button color="accent" routerLink="/dashboard/usuarios" >Usuarios</button>
-    <button mat-button color="accent" routerLink="/dashboard/reportes" >Reportes</button>
+    <button mat-button color="accent" *ngFor="let item of menu"  [routerLink]="item.redirect" >{{item.nombre}}</button>
     <span class="example-spacer"></span>
     <button routerLink="/logout" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>logout</mat-icon>

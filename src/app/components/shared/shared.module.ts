@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 // Material UI
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,11 +12,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
-
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    HttpClientModule,
     MatSliderModule,
     MatFormFieldModule,
     MatInputModule,
@@ -28,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   exports: [
     MatSliderModule,
+    HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
