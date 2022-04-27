@@ -1,0 +1,22 @@
+[
+    {
+        "id":"1",
+        "nombre":"Obras publicas"
+    },
+    {
+        "id":"2",
+        "nombre":"Economia"
+    },
+    {
+        "id":"3",
+        "nombre":"Cementerio"
+    },
+    {
+        "id":"4",
+        "nombre":"NAC"
+    },
+    {
+        "id":"5",
+        "nombre":"Becas"
+    },
+]

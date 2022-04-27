@@ -3,6 +3,11 @@
     <span class="example-spacer"></span>
     <button mat-button color="accent" *ngFor="let item of menu"  [routerLink]="item.redirect" >{{item.nombre}}</button>
     <span class="example-spacer"></span>
+    <a class="navbar-brand">
+        <div class="logo-image">
+              <img src="/src/assets/img/usuario.png" class="img-fluid">
+        </div>
+  </a>
     <button routerLink="/logout" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>logout</mat-icon>
     </button>

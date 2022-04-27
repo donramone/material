@@ -8,9 +8,12 @@ import { InicioComponent } from './inicio/inicio.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
+import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
+import { AreasComponent } from './areas/areas.component';
 
 @NgModule({
-  declarations: [DashboardComponent, InicioComponent, NavbarComponent, UsuariosComponent, ReportesComponent],
+  declarations: [DashboardComponent, InicioComponent, NavbarComponent, UsuariosComponent, ReportesComponent, CrearUsuarioComponent, EditarUsuarioComponent, AreasComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

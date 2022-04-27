@@ -1,7 +1,14 @@
 export interface Usuario {
-    usuario: string;
+    id: number;
+    dni?: string;
     nombre: string;
-    apellido: string;
-    sexo: string;
-
+    direccion?: string;
+    telefono?: string;
+    fechaNacimiento?: string;
+    sexo?: string;
+    // datos de su empleo
+    importe?: number;
+    ocupacion?: string;
+    area?: string;
+    estado?: string;
 }

@@ -1,0 +1,106 @@
+<div class="container">
+    <form [formGroup]="editForm" (ngSubmit)="editarUsuario()"> 
+   <mat-card  style="margin-top:10px">
+       <p>EDITAR Datos Personales: {{userId}} </p>
+
+   <mat-grid-list cols="8"  rowHeight="70px">
+       <mat-grid-tile [colspan]="2" [rowspan]="3" >
+           <img src="./assets/img/usuario.png" alt="" width="110" height="110">
+       </mat-grid-tile >
+       <mat-grid-tile [colspan]="3">
+           <mat-form-field class="ancho">
+               <mat-label>DNI</mat-label>
+               <input matInput autocomplete="off" formControlName="dni">
+           </mat-form-field>
+       </mat-grid-tile >
+       <mat-grid-tile [colspan]="3" [rowspan]="1">
+           <mat-form-field class="ancho" >
+               <mat-label>Nombre</mat-label>
+               <input matInput matInput autocomplete="off" formControlName="nombre">
+           </mat-form-field>
+       </mat-grid-tile>
+      
+       <mat-grid-tile [colspan]="3" [rowspan]="1" >
+           <mat-form-field class="ancho">
+               <mat-label>Dirección</mat-label>
+               <input matInput  autocomplete="off" formControlName="direccion">
+           </mat-form-field>
+       </mat-grid-tile>
+
+       <mat-grid-tile [colspan]="3" [rowspan]="1" >
+           <mat-form-field class="ancho">
+               <mat-label>Telefono</mat-label>
+               <input matInput matInput autocomplete="off" formControlName="telefono">
+           </mat-form-field>
+       </mat-grid-tile>
+ 
+       <mat-grid-tile [colspan]="3" [rowspan]="1" >
+           <mat-form-field class="ancho" color="accent">
+               <mat-label>Fecha de nacimiento</mat-label>
+               <input matInput [matDatepicker]="picker"  formControlName="fechaNacimiento">
+               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+               <mat-datepicker #picker></mat-datepicker>
+           </mat-form-field>
+       </mat-grid-tile>
+
+       <mat-grid-tile [colspan]="3" [rowspan]="1">
+           <mat-form-field class="ancho">
+               <mat-label>Sexo</mat-label>
+               <mat-select formControlName="sexo">
+                  <mat-option *ngFor="let s of sexo" [value]="s.value">
+                   {{s.viewValue}}
+                 </mat-option>
+               </mat-select>
+           </mat-form-field>
+       </mat-grid-tile>
+
+   </mat-grid-list>
+         
+</mat-card>
+
+<mat-card  style="margin-top:10px">
+   <p>EDITAR Datos Area:</p>
+   <mat-grid-list cols="4" rowHeight="70px">
+       
+       <mat-grid-tile [colspan]="1" [rowspan]="1" >
+           <mat-form-field class="ancho">
+               <mat-label>Importe</mat-label>
+               <input matInput autocomplete="off" formControlName="importe">
+           </mat-form-field>
+       </mat-grid-tile>
+
+       <mat-grid-tile [colspan]="1" [rowspan]="1">
+           <mat-form-field class="ancho">
+               <mat-label>area</mat-label>
+               <mat-select formControlName="area">
+                  <mat-option *ngFor="let a of area" [value]="a.value">
+                   {{a.viewValue}}
+                 </mat-option>
+               </mat-select>
+           </mat-form-field>
+       </mat-grid-tile> 
+
+       <mat-grid-tile [colspan]="1" [rowspan]="1" >
+           <mat-form-field class="ancho">
+               <mat-label>Ocupacion</mat-label>
+               <input matInput autocomplete="off"  formControlName="ocupacion">
+           </mat-form-field>
+       </mat-grid-tile>
+
+       <mat-grid-tile [colspan]="1" [rowspan]="1" >
+           <mat-form-field class="ancho">
+               <mat-label>Status </mat-label>
+               <input matInput autocomplete="off"formControlName="estado" >
+           </mat-form-field>
+       </mat-grid-tile>
+   
+       <mat-grid-tile [colspan]="4" [rowspan]="1" >
+           <button mat-raised-button style="margin-right: 20px;" >Volver</button>
+           <button type="submit" [disabled]="editForm.invalid" mat-raised-button color="primary">Aceptar</button>
+       </mat-grid-tile>
+
+   </mat-grid-list>
+
+</mat-card>
+</form> 
+</div>
