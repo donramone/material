@@ -37,7 +37,7 @@ export class CrearUsuarioComponent implements OnInit {
       telefono: [''],
       fechaNacimiento: ['', Validators.required],
       sexo: ['', Validators.required],
-      importe:[''],
+      salario:[''],
       ocupacion:[''],
       estado:[''],
       area: [''],
@@ -48,28 +48,32 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   agregarUsuario() {
-       
-    const user: Usuario = {
-     // id: this.form.value.usuario,
-      id: 77,
-      dni: this.form.value.dni,
-      nombre: this.form.value.nombre,
-      direccion: this.form.value.direccion,
-      telefono: this.form.value.telefono,
-      fechaNacimiento: this.form.value.fechaNacimiento,
-      sexo: this.form.value.sexo,
-      importe: this.form.value.importe,
-      area: this.form.value.area,
-      ocupacion: this.form.value.estado,
-      estado: this.form.value.estado,
+    if(this.form.valid){
+      const user: Usuario = {
+        // id: this.form.value.usuario,
+         //id: 78,
+         dni: this.form.value.dni,
+         nombre: this.form.value.nombre,
+         direccion: this.form.value.direccion,
+         telefono: this.form.value.telefono,
+        // fechaNacimiento: this.form.value.fechaNacimiento,
+        fechaNacimiento:'1982/10/10',
+        //sexo: this.form.value.sexo,
+         // importe: this.form.value.importe,
+         salario: this.form.value.importe,
+         area: this.form.value.area,
+       //  ocupacion: this.form.value.ocupacion,
+       //  estado: this.form.value.estado,
+       }
+       //console.log(user);
+       this._usuarioService.agregarUsuario(user);
+       this._snackBar.open('El usuario fue agregado con Exito','', {
+         duration: 2000,
+         horizontalPosition: 'center',
+         verticalPosition: 'bottom',
+       })
     }
-    console.log(user);
-    this._usuarioService.agregarUsuario(user);
-    this._snackBar.open('El usuario fue agregado con Exito','', {
-      duration: 2000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-    })
+   
 
     this.router.navigate(['/dashboard/usuarios']);
 

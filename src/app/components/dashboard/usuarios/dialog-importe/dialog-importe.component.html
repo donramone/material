@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Nomb {{dialogTitle}}  Id {{id}}</h1>
+<!-- No funciona si arriba no Indico el ID -->
+<form [formGroup]="form">
+
+  <div mat-dialog-content>
+ 
+    <mat-form-field appearance="standard">
+      <mat-label>Nombre</mat-label>
+      <input formControlName="nombre" matInput placeholder="Placeholder" />
+    </mat-form-field> 
+
+    <mat-form-field appearance="standard">
+      <mat-label>Imprte</mat-label>
+      <input formControlName="importe" matInput type="number" placeholder="importe" autofocus/>
+    </mat-form-field>
+  </div>
+</form>
+
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button color="accent" (click)="saveEdit()">Save</button>
+</div>

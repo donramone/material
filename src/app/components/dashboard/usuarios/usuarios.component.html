@@ -1,77 +1,152 @@
 <div class="container">
-    <mat-toolbar color="accent">
-        <span>Usuarios</span>
-        <div class="example-spacer"> </div>
-        <button mat-raised-button color="primary" routerLink="/dashboard/crear-usuario">Agregar</button>
-    </mat-toolbar>
-    <div *ngIf=" listUsuario.length > 0">
-      
+  <mat-toolbar color="accent">
+    <span>Usuarios</span>
+    <div class="example-spacer"></div>
+    <button
+      mat-raised-button
+      color="primary"
+      routerLink="/dashboard/crear-usuario"
+    >
+      Agregar
+    </button>
+  </mat-toolbar>
+  <mat-form-field>
+    <mat-label>Areas</mat-label>
+    <mat-select [(value)]="selectedArea" (selectionChange)="selectArea($event)">
+      <mat-option *ngFor="let a of area" [value]="a.id">
+        {{ a.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button
+  mat-raised-button
+  color="primary"
+  (click)="buscar(3)"
+>
+  Buscar
+</button>
+  <p>Selected Value: {{ selectedArea }}</p>
 
-        <mat-form-field >
-            <mat-label>AreA</mat-label>
-            <mat-select >
-               <mat-option *ngFor="let a of area" [value]="a.value">
-                {{a.viewValue}}
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
+  <div *ngIf="employee.length > 0">
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input autocomplete="off" />
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
 
-      <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
-      </mat-form-field>
-      <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort >
-         
-          <ng-container matColumnDef="id" >
-            <th mat-header-cell *matHeaderCellDef  mat-sort-header>ID</th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-          </ng-container>
-        
-          <!-- Name Column -->
-          <ng-container matColumnDef="dni">
-            <th mat-header-cell *matHeaderCellDef  mat-sort-header>DNI</th>
-            <td mat-cell *matCellDef="let element"> {{element.dni}} </td>
-          </ng-container>
-        
-          <!-- Weight Column -->
-          <ng-container matColumnDef="nombre" >
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
-            <td mat-cell *matCellDef="let element" > {{element.nombre}} </td>
-          </ng-container>
-        
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="importe">
-            <th mat-header-cell *matHeaderCellDef> Importe </th>
-            <td mat-cell *matCellDef="let element"> {{element.importe  | currency  }} </td>
-          </ng-container>
-  
-          <ng-container matColumnDef="estado">
-            <th mat-header-cell *matHeaderCellDef> Estado </th>
-            <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
-          </ng-container>
-  
-          
-          <ng-container matColumnDef="acciones">
-            <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let element; let i = index"  style="text-align: right;"> 
-              <a class="pointer" style="color: rgb(115, 212, 250);" matTooltip="Ver Usuario">
-                <mat-icon>search</mat-icon>
-              </a>
-              <a class="pointer" (click)="editarUsuario(element)" style="color: rgb(49, 168, 189);" matTooltip="Editar Usuario">
-                <mat-icon>edit</mat-icon>
-              </a>
-              <a class="pointer" (click)="eliminarUsuario(i)" style="color: rgb(241, 90, 52);" matTooltip="Eliminar Usuario">
-                <mat-icon>delete</mat-icon>
-              </a>
-            </td>
-          </ng-container>
-        
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-      </div>
+        <ng-container matColumnDef="dni">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>DNI</th>
+          <td mat-cell *matCellDef="let element">{{ element.dni }}</td>
+        </ng-container>
+
+        <!--   
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element">
+            <ng-container *ngIf="element.position !== editRowId">
+              <span (click)="edit(element.position, 'nombre')">
+                {{ element.nombre }}
+              </span>
+            </ng-container>
+            <ng-container *ngIf="element.position === editRowId">
+              <input matInput name="nombre" [(ngModel)]="element.nombre" />
+            </ng-container>
+          </td>
+        </ng-container>
+  -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element">
+            {{ isEditing }}
+            <div *ngIf="!isEditing">
+              {{ element.position }} {{ element.nombre }}
+            </div>
+            <div *ngIf="isEditing">
+              <input type="text" />
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="salario">
+          <th mat-header-cell *matHeaderCellDef>Salario</th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="!isEditing">
+              {{ element.salario | currency }}
+            </div>
+            <div *ngIf="isEditing">
+              <input type="text" {{element.id}} />
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef>Estado</th>
+          <td mat-cell *matCellDef="let element">
+            <mat-slide-toggle></mat-slide-toggle>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td
+            mat-cell
+            *matCellDef="let element; let i = index"
+            style="text-align: right"
+          >
+            <a
+              class="pointer"
+              (click)="testEdit(element)"
+              style="color: rgb(115, 212, 250)"
+              matTooltip="Ver Usuario"
+            >
+              <mat-icon>search</mat-icon>
+            </a>
+            <a
+              class="pointer"
+              (click)="editarUsuario(element)"
+              style="color: rgb(49, 168, 189)"
+              matTooltip="Editar Usuario"
+            >
+              <mat-icon>edit</mat-icon>
+            </a>
+            <a
+              class="pointer"
+              (click)="eliminarUsuario(i)"
+              style="color: rgb(241, 90, 52)"
+              matTooltip="Eliminar Usuario"
+            >
+              <mat-icon>delete</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColumns; let i = index"
+          [ngClass]="{ highlight: selectedRowIndex == i }"
+          (click)="highlight(i)"
+          tabindex="999"
+          (keydown.arrowdown)="arrowDownEvent(selectedRowIndex)"
+          (keydown.arrowup)="arrowUpEvent(selectedRowIndex)"
+        ></tr>
+        <!-- (keydown.enter)="editWithEnter(selectedRowIndex)" -->
+        <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+        <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>> -->
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25]"
+        aria-label="Select page of personal"
+      ></mat-paginator>
     </div>
-    <h2 *ngIf="listUsuario.length == 0" > No Hay usuarios cargados...</h2>
+    <p>Total Importe:</p>
+  </div>
+  <h2 *ngIf="employee.length == 0">No Hay usuarios cargados...</h2>
 </div>
+<app-tabla-usuario (enviar)="recibirHijo($event)"></app-tabla-usuario>

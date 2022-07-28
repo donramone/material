@@ -64,8 +64,8 @@
         
         <mat-grid-tile [colspan]="1" [rowspan]="1" >
             <mat-form-field class="ancho">
-                <mat-label>Importe</mat-label>
-                <input matInput autocomplete="off" formControlName="importe">
+                <mat-label>Salario</mat-label>
+                <input matInput autocomplete="off" formControlName="salario">
             </mat-form-field>
         </mat-grid-tile>
 
@@ -88,10 +88,13 @@
         </mat-grid-tile>
 
         <mat-grid-tile [colspan]="1" [rowspan]="1" >
-            <mat-form-field class="ancho">
+            <mat-label>Status </mat-label>
+            <mat-slide-toggle formControlName="estado">Activo</mat-slide-toggle>
+            <!-- <mat-form-field class="ancho">
                 <mat-label>Status </mat-label>
-                <input matInput autocomplete="off"formControlName="estado" >
-            </mat-form-field>
+                <input matInput autocomplete="off"formControlName="estado" > 
+                
+            </mat-form-field> -->
         </mat-grid-tile>
     
         <mat-grid-tile [colspan]="4" [rowspan]="1" >
