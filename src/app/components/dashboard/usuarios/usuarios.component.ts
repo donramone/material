@@ -87,13 +87,7 @@ export class UsuariosComponent implements OnInit {
   }
   ngOnInit(): void {
      this.cargarUsuario();
-    /*   
-   this._usuarioService.getUsuarios().subscribe(( empleados =>{
-      this.employee = empleados;
-      this.dataSource.data = this.employee;
-      console.log(this.employee);
-    }));
-    */
+
   }
 
   cargarUsuario() {
@@ -102,7 +96,13 @@ export class UsuariosComponent implements OnInit {
       this.dataSource.data = this.employee;
     });
   }
-
+/*
+  crearUsuario(usuario: Usuario){
+    this._usuarioService.agregarUsuario(usuario).subscribe((data) =>{
+      console.log("success add", data);
+    }) 
+  }
+  */
   findUserByArea(id: number) {
     console.log('compnent find user by area');
     this._usuarioService.getByArea(id).subscribe((empleados) => {
@@ -113,14 +113,16 @@ export class UsuariosComponent implements OnInit {
     });
   }
   eliminarUsuario(id: number) {
-    this._usuarioService.eliminarUsuario(id);
+    this._usuarioService.eliminarUsuario(id).subscribe((data)=>{
+         console.log("success delete");
+    });
     this.cargarUsuario();
     this._snackBar.open('El usuario fue eliminado cone exito', '', {
       duration: 2000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
     });
-  }
+   }
 
   editarUsuario(myUser: any) {
     // this.router.navigate(['dashboard/editar-usuario'], { queryParams:{id: myUser.id}})

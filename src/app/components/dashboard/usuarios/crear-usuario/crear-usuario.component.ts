@@ -59,20 +59,21 @@ export class CrearUsuarioComponent implements OnInit {
         // fechaNacimiento: this.form.value.fechaNacimiento,
         fechaNacimiento:'1982/10/10',
         //sexo: this.form.value.sexo,
-         // importe: this.form.value.importe,
          salario: this.form.value.importe,
          area: this.form.value.area,
-       //  ocupacion: this.form.value.ocupacion,
+         ocupacion: this.form.value.ocupacion,
        //  estado: this.form.value.estado,
        }
-       //console.log(user);
-       this._usuarioService.agregarUsuario(user);
+       this._usuarioService.agregarUsuario(user).subscribe((data) =>{
+        console.log("success add", data);
+      }) 
+
        this._snackBar.open('El usuario fue agregado con Exito','', {
          duration: 2000,
          horizontalPosition: 'center',
          verticalPosition: 'bottom',
        })
-    }
+      }
    
 
     this.router.navigate(['/dashboard/usuarios']);
