@@ -51,15 +51,14 @@ export class CrearUsuarioComponent implements OnInit {
     if(this.form.valid){
       const user: Usuario = {
         // id: this.form.value.usuario,
-         //id: 78,
          dni: this.form.value.dni,
          nombre: this.form.value.nombre,
          direccion: this.form.value.direccion,
          telefono: this.form.value.telefono,
-        // fechaNacimiento: this.form.value.fechaNacimiento,
-        fechaNacimiento:'1982/10/10',
+         fechaNacimiento: this.form.value.fechaNacimiento,
+        //fechaNacimiento:'1982/10/10',
         //sexo: this.form.value.sexo,
-         salario: this.form.value.importe,
+         salario: this.form.value.salario,
          area: this.form.value.area,
          ocupacion: this.form.value.ocupacion,
        //  estado: this.form.value.estado,

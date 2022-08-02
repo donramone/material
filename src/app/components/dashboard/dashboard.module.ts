@@ -11,13 +11,22 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
 import { AreasComponent } from './areas/areas.component';
+import { DialogImporteComponent } from './usuarios/dialog-importe/dialog-importe.component';
+import { TablaUsuarioComponent } from './usuarios/tabla-usuario/tabla-usuario.component';
 
 @NgModule({
-  declarations: [DashboardComponent, InicioComponent, NavbarComponent, UsuariosComponent, ReportesComponent, CrearUsuarioComponent, EditarUsuarioComponent, AreasComponent],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    SharedModule,
-  ]
+  declarations: [
+    DashboardComponent,
+    InicioComponent,
+    NavbarComponent,
+    UsuariosComponent,
+    ReportesComponent,
+    CrearUsuarioComponent,
+    EditarUsuarioComponent,
+    AreasComponent,
+    DialogImporteComponent,
+    TablaUsuarioComponent,
+  ],
+  imports: [CommonModule, DashboardRoutingModule, SharedModule],
 })
-export class DashboardModule { }
+export class DashboardModule {}

@@ -64,8 +64,8 @@
        
        <mat-grid-tile [colspan]="1" [rowspan]="1" >
            <mat-form-field class="ancho">
-               <mat-label>Importe</mat-label>
-               <input matInput autocomplete="off" formControlName="importe">
+               <mat-label>Salario</mat-label>
+               <input matInput autocomplete="off" formControlName="salario">
            </mat-form-field>
        </mat-grid-tile>
 
@@ -74,8 +74,8 @@
                <mat-label>area</mat-label>
                <mat-select formControlName="area">
                   <mat-option *ngFor="let a of area" [value]="a.value">
-                   {{a.viewValue}}
-                 </mat-option>
+                    {{a.viewValue}}  
+                 </mat-option> 
                </mat-select>
            </mat-form-field>
        </mat-grid-tile> 

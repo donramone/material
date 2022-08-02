@@ -20,6 +20,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select'; 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import  {MatSlideToggleModule } from '@angular/material/slide-toggle'; 
+import { MatDialogModule } from '@angular/material/dialog'; 
 
 @NgModule({
   declarations: [],
@@ -44,6 +46,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSlideToggleModule,
+    MatDialogModule,
   ],
   exports: [
     MatSliderModule,
@@ -65,6 +69,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSlideToggleModule,
+    MatDialogModule,
   ]
 })
 export class SharedModule { }
