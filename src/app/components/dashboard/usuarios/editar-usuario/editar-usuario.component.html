@@ -72,9 +72,9 @@
        <mat-grid-tile [colspan]="1" [rowspan]="1">
            <mat-form-field class="ancho">
                <mat-label>area</mat-label>
-               <mat-select formControlName="area">
-                  <mat-option *ngFor="let a of area" [value]="a.value">
-                    {{a.viewValue}}  
+               <mat-select [(value)]="selectedArea" formControlName="area">
+                  <mat-option *ngFor="let a of area" [value]="a">
+                    {{a.nombre}}  
                  </mat-option> 
                </mat-select>
            </mat-form-field>
@@ -95,7 +95,7 @@
        </mat-grid-tile>
    
        <mat-grid-tile [colspan]="4" [rowspan]="1" >
-           <button mat-raised-button style="margin-right: 20px;" >Volver</button>
+           <button mat-raised-button style="margin-right: 20px;"  (click)="volver()" >Volver</button>
            <button type="submit" [disabled]="editForm.invalid" mat-raised-button color="primary">Aceptar</button>
        </mat-grid-tile>
 

@@ -96,19 +96,11 @@ export class UsuariosComponent implements OnInit {
       this.dataSource.data = this.employee;
     });
   }
-/*
-  crearUsuario(usuario: Usuario){
-    this._usuarioService.agregarUsuario(usuario).subscribe((data) =>{
-      console.log("success add", data);
-    }) 
-  }
-  */
+
   findUserByArea(id: number) {
-    console.log('compnent find user by area');
     this._usuarioService.getByArea(id).subscribe((empleados) => {
       this.employee = empleados;
       console.log(this.employee);
-
       this.dataSource.data = this.employee;
     });
   }
@@ -116,7 +108,7 @@ export class UsuariosComponent implements OnInit {
     this._usuarioService.eliminarUsuario(id).subscribe((data)=>{
          console.log("success delete");
     });
-    this.cargarUsuario();
+    this.cargarUsuario().unsubscribe();
     this._snackBar.open('El usuario fue eliminado cone exito', '', {
       duration: 2000,
       horizontalPosition: 'center',
